@@ -13,8 +13,8 @@ def index():
 
 @app.route('/graph', methods = ['POST'])
 def graph():
-    stock = request.POST['stock']
-    print stock
+    #stock = request.POST['stock']
+    #print stock
     return render_template('graph.html')
 """
     #plttype = request.form.tickerdetails
