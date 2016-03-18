@@ -10,10 +10,11 @@ def main():
 def index():
   return render_template('index.html')
 
-"""
+
 @app.route('/graph', methods = ['POST'])
 def graph():
     stock = request.form['stock']
+"""
     #plttype = request.form.tickerdetails
     resp_data = getdata(stock)
     df = getdf(resp_data)
@@ -23,10 +24,10 @@ def graph():
 	      x_axis_type='datetime')
 
      script, div = components(plot)
-
+"""
      return render_template('graph.html', script=script, div=div)
     
-
+"""
 def getdata(stock):
     api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json' % stock
     session = re.Session()
