@@ -10,5 +10,12 @@ def main():
 def index():
   return render_template('index.html')
 
+@app.route('/graph', methods = ['POST'])
+def graph():
+  print(request.form.get('stock',none))
+  print( request.form.get('tickerdetails',None),"checked")
+  return render_template('graph.html')
+
+
 if __name__ == '__main__':
   app.run(port=33507)
