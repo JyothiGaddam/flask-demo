@@ -10,10 +10,11 @@ def main():
 def index():
   return render_template('index.html')
 
-@app.route('/graph', methods = ['POST'])
+"""
+@app.route('/graph', methods = 'POST')
 def graph():
-    print(request.form.get('stock',none))
-    print( request.form.get('tickerdetails',None),"checked")
+    #print(request.form.get('stock',none))
+    #print( request.form.get('tickerdetails',None),"checked")
     resp_data = getdata(request.form.get('stock'))
     df = getdf(resp_data)
     df.plot = figure(tools=TOOLS,
@@ -39,7 +40,7 @@ def getdf(resp_data):
      df.columns = j["column_names"]
      return df 
  
-       
+"""       
        
 if __name__ == '__main__':
   app.run(port=33507)
