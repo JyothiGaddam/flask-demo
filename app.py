@@ -14,6 +14,7 @@ def index():
 @app.route('/graph', methods = ['POST'])
 def graph():
     stock = request.form['stock']
+    return render_template('graph.html')
 """
     #plttype = request.form.tickerdetails
     resp_data = getdata(stock)
@@ -24,10 +25,10 @@ def graph():
 	      x_axis_type='datetime')
 
      script, div = components(plot)
-"""
+
      return render_template('graph.html', script=script, div=div)
     
-"""
+
 def getdata(stock):
     api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json' % stock
     session = re.Session()
