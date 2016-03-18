@@ -13,7 +13,7 @@ def index():
 
 @app.route('/graph', methods = ['POST'])
 def graph():
-    stock = request.form['stock']
+    stock = request.POST['stock']
     print stock
     return render_template('graph.html')
 """
