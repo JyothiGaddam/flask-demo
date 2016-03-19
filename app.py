@@ -31,7 +31,8 @@ def graph():
     df = pd.DataFrame(j["data"])
     df.columns = j["column_names"]
     
-    x_list = ['2016-03-18' '2016-03-17' '2016-03-16'  '1980-12-16' '1980-12-15' '1980-12-12']
+    x_list = pd.to_datetime(df["date"])
+
     y_list = [10,20,30,40,50,60]
     
     TOOLS = 'box_zoom,box_select,resize,reset,hover,wheel_zoom'
