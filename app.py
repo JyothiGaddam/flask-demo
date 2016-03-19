@@ -22,7 +22,7 @@ def graph():
     #plttype = request.form.tickerdetails
     resp_data = getdata(stock)
     df = getdf(resp_data)
-    """
+    
     p = figure(title='Data from Quandl WIKI set',x_axis_type='datetime')
     p.line(df['Date'],df['Close'], color='#A6CEE3', legend='stock')
     p.xaxis.axis_label = 'Date'
@@ -31,7 +31,7 @@ def graph():
     script, div = components(p)
     
     return render_template('graph.html', script=script, div=div)
-    """
+    
 
 def getdata(stock):
     api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json' % stock
@@ -47,4 +47,4 @@ def getdf(resp_data):
      return df   
      
 if __name__ == '__main__':
-  app.run(port=33507)
+  app.run(port=33507,debug=True)
