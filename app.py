@@ -31,6 +31,8 @@ def graph():
     df = pd.DataFrame(j["data"])
     df.columns = j["column_names"]
     
+    x_list = [1,2,3]
+    y_list = [10,20,30]
     
     TOOLS = 'box_zoom,box_select,resize,reset,hover,wheel_zoom'
     p1 = figure(tools=TOOLS, title='Data from Quandl WIKI set',x_axis_type = "datetime")
@@ -39,7 +41,7 @@ def graph():
     p1.xaxis.axis_label = 'Date'
     p1.yaxis.axis_label = 'Price'
 
-    p1.line(datetime(df['Date']), df['Close'], color='#A6CEE3', legend=stock)
+    p1.line(x_list, y_list, color='#A6CEE3', legend=stock)
     
     script, div = components(p1)
     
