@@ -22,15 +22,15 @@ def graph():
     #plttype = request.form.tickerdetails
     resp_data = getdata(stock)
     df = getdf(resp_data)
-    
+    """
     p = figure(title='Data from Quandl WIKI set',x_axis_type='datetime')
     p.line(df['Date'],df['Close'], color='#A6CEE3', legend='stock')
     p.xaxis.axis_label = 'Date'
     p.yaxis.axis_label = 'Price' 
     p.legend.orientation = "top_left"
     script, div = components(p)
-    
-    return render_template('graph.html', script=script, div=div)
+    """
+    return render_template('graph.html')
     
 
 def getdata(stock):
