@@ -16,8 +16,6 @@ def main():
 def index():
   return render_template('index.html')
 
-                                                               
-
 @app.route('/graph', methods = ['POST'])
 def graph():
     
@@ -44,8 +42,8 @@ def datetime(x):
 
 def getdata(stock):
     api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json' % stock
-    session = re.Session()
-    session.mount('http://',re.adapters.HTTPAdapter(max_retries=3))
+    session = requests.Session()
+    session.mount('http://',requests.adapters.HTTPAdapter(max_retries=3))
     raw_data = session.get(api_url)
     return raw_data
 
