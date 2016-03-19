@@ -17,10 +17,11 @@ def index():
 
 @app.route('/graph', methods = ['POST'])
 def graph():
-    """
+    
     stock = request.form['stock']
     #print stock
     #plttype = request.form.tickerdetails
+    """
     resp_data = getdata(stock)
     df = getdf(resp_data)
     
