@@ -56,8 +56,8 @@ def graph():
     
     x_list = df['Date'][:3]
     y_list = df['Close'][:3]
-    
-    plot = figure(title='Data from Quandl WIKI set',x_axis_label='Date',x_axis_type='datetime')
+    TOOLS = 'box_zoom,box_select,resize,reset,hover,wheel_zoom'
+    plot = figure(tools=TOOLS,title='Data from Quandl WIKI set',x_axis_label='Date',x_axis_type='datetime')
     plot.line(x_list,y_list, color='#A6CEE3', legend=stock)
     
     plot.yaxis.axis_label = 'Price' 
