@@ -16,33 +16,21 @@ def main():
 def index():
   return render_template('index.html')
 
-
 def datetime(x):
     return np.array(x, dtype=np.datetime64)
-
-
-def getdata(stock):
-    api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json' % stock
-    session = requests.Session()
-    session.mount('http://',requests.adapters.HTTPAdapter(max_retries=3))
-    raw_data = session.get(api_url)
-    return raw_data
-
-def getdf(resp_data):
-     j = resp_data.json()
-     df = pd.DataFrame(j["data"])
-     df.columns = j["column_names"]
-     return df   
-
-
-
 
 @app.route('/graph', methods = ['POST'])
 def graph():
     
     stock = request.form['stock']
-    resp_data = getdata(stock)
-    df = getdf(resp_data)
+    api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json' % stock
+    session = requests.Session()
+    session.mount('http://',requests.adapters.HTTPAdapter(max_retries=3))
+    resp_data = session.get(api_url)
+    j = resp_data.json()
+    df = pd.DataFrame(j["data"])
+    df.columns = j["column_names"]
+    
     
     TOOLS = 'box_zoom,box_select,resize,reset,hover,wheel_zoom'
     p1 = figure(tools=TOOLS, title='Data from Quandl WIKI set',x_axis_type = "datetime")
@@ -60,4 +48,4 @@ def graph():
 
     
 if __name__ == '__main__':
-  app.run(port=33507,debug=True)
+  app.run(port=33507)
