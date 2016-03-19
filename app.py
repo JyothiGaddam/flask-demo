@@ -29,7 +29,7 @@ def analysis():
     x_list = df['Date'][:3]
     y_list = df['Close'][:3]
     plot = figure(title='Data from Quandl WIKI set',x_axis_type='datetime')
-    plot.line(x_list,y_list, color='#A6CEE3', legend='stock')
+    plot.line(x_list,y_list, color='#A6CEE3', legend=stock)
     plot.xaxis.axis_label = 'Date'
     plot.yaxis.axis_label = 'Price' 
     plot.legend.orientation = "top_left"
