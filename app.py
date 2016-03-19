@@ -26,7 +26,7 @@ def analysis():
     j = resp_data.json()
     df = pd.DataFrame(j["data"])
     df.columns = j["column_names"]
-    return render_template("analysis.html", name=stock, data=x.to_html())
+    return render_template("analysis.html", name=stock, df)
                                                                 # ^^^^^^^^^
 
 
