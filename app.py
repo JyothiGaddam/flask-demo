@@ -1,4 +1,8 @@
 from flask import Flask, render_template, request, redirect
+import pandas as pd
+from bokeh.plotting import figure
+import jinja2
+from bokeh.embed import components
 
 app = Flask(__name__)
 
@@ -15,19 +19,19 @@ def index():
 def graph():
     stock = request.form['stock']
     #print stock
-    return render_template('graph.html')
-"""
     #plttype = request.form.tickerdetails
     resp_data = getdata(stock)
     df = getdf(resp_data)
-    df.plot = figure(tools=TOOLS,
-	      title='Data from Quandl WIKI set',
-	      x_axis_label='date',
-	      x_axis_type='datetime')
+    #return render_template('graph.html', stock=stock, data=df.to_html())
 
-     script, div = components(plot)
+    p = figure(title='Data from Quandl WIKI set',x_axis_type='datetime')
+    p.line(df['Date'],df['Adj Close'], color='#A6CEE3', legend=stock)
+    p.xaxis.axis_label = 'Date'
+    p.yaxis.axis_label = 'Price' 
+    p.legend.orientation = "top_left"
+    script, div = components(p)
 
-     return render_template('graph.html', script=script, div=div)
+    return render_template('graph.html', script=script, div=div)
     
 
 def getdata(stock):
@@ -41,9 +45,7 @@ def getdf(resp_data):
      j = resp_data.json()
      df = pd.DataFrame(j["data"])
      df.columns = j["column_names"]
-     return df 
- 
-"""     
+     return df   
        
 if __name__ == '__main__':
   app.run(port=33507)
