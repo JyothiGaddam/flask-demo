@@ -54,8 +54,8 @@ def graph():
     df = pd.DataFrame(j["data"])
     df.columns = j["column_names"]
     
-    x_list = df['Date'].tolist()
-    y_list = df['Close'].tolist()
+    x_list = [1,2,3,4,5,6,7,8,9]
+    y_list = [10,20,30,40,50,60,70,80,90]
     TOOLS = 'box_zoom,box_select,resize,reset,hover,wheel_zoom'
     plot = figure(tools=TOOLS,title='Data from Quandl WIKI set',x_axis_label='Date',x_axis_type='datetime')
     plot.line(x_list, y_list, color='#A6CEE3', legend=stock)
