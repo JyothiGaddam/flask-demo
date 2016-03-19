@@ -28,9 +28,9 @@ def analysis():
     df.columns = j["column_names"]
     x_list = df['Date'][:3]
     y_list = df['Close'][:3]
-    plot = figure(title='Data from Quandl WIKI set',x_axis_type='datetime')
+    plot = figure(title='Data from Quandl WIKI set',x_axis_label = date',x_axis_type='datetime')
     plot.line(x_list,y_list, color='#A6CEE3', legend=stock)
-    plot.xaxis.axis_label = 'Date'
+    
     plot.yaxis.axis_label = 'Price' 
     plot.legend.orientation = "top_left"
     script, div = components(plot)
@@ -54,11 +54,12 @@ def graph():
     df = pd.DataFrame(j["data"])
     df.columns = j["column_names"]
     
+    x_list = df['Date'][:3]
+    y_list = df['Close'][:3]
     
+    plot = figure(title='Data from Quandl WIKI set',x_axis_label='Date',x_axis_type='datetime')
+    plot.line(x_list,y_list, color='#A6CEE3', legend=stock)
     
-    plot = figure(title='Data from Quandl WIKI set',x_axis_type='datetime')
-    plot.line(df['Date'],df['Close'], color='#A6CEE3', legend='stock')
-    plot.xaxis.axis_label = 'Date'
     plot.yaxis.axis_label = 'Price' 
     plot.legend.orientation = "top_left"
     script, div = components(plot)
