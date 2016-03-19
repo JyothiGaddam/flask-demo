@@ -46,7 +46,7 @@ def graph():
     df = pd.DataFrame(j["data"])
     df.columns = j["column_names"]
     
-    """
+    
     
     p = figure(title='Data from Quandl WIKI set',x_axis_type='datetime')
     p.line(df['Date'],df['Close'], color='#A6CEE3', legend='stock')
@@ -56,7 +56,7 @@ def graph():
     script, div = components(p)
     
     return render_template('graph.html')
-    """
+    
 
 def getdata(stock):
     api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json' % stock
