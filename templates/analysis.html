@@ -10,17 +10,13 @@
         padding-top: 100px;
       }
     </style>
+    {{ script | safe }}
   </head>
   <body>
     <div class="container">
       <p>My string: {{mystring}}</p>
-      <p>Value from the list: {{my_list[3]}}</p>
-      <p>Loop through the list:</p>
-      <ul>
-        {% for n in my_list %}
-        <li>{{n}}</li>
-        {% endfor %}
-      </ul>
+      {{ div| safe }}
+      
     </div>
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
