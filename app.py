@@ -34,7 +34,7 @@ def analysis():
     script, div = components(plot)
     
     #return render_template('graph.html', script=script, div=div)
-    return render_template("analysis.html", script=script, div=div, mystring=stock)
+    return render_template("analysis.html", script=script, div=div)
                                                                 
 
 @app.route('/graph', methods = ['POST'])
