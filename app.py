@@ -16,6 +16,27 @@ def main():
 def index():
   return render_template('index.html')
 
+
+def datetime(x):
+    return np.array(x, dtype=np.datetime64)
+
+
+def getdata(stock):
+    api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json' % stock
+    session = requests.Session()
+    session.mount('http://',requests.adapters.HTTPAdapter(max_retries=3))
+    raw_data = session.get(api_url)
+    return raw_data
+
+def getdf(resp_data):
+     j = resp_data.json()
+     df = pd.DataFrame(j["data"])
+     df.columns = j["column_names"]
+     return df   
+
+
+
+
 @app.route('/graph', methods = ['POST'])
 def graph():
     
@@ -36,22 +57,7 @@ def graph():
     
     return render_template('graph.html', script=script, div=div)
 
-def datetime(x):
-    return np.array(x, dtype=np.datetime64)
 
-
-def getdata(stock):
-    api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json' % stock
-    session = requests.Session()
-    session.mount('http://',requests.adapters.HTTPAdapter(max_retries=3))
-    raw_data = session.get(api_url)
-    return raw_data
-
-def getdf(resp_data):
-     j = resp_data.json()
-     df = pd.DataFrame(j["data"])
-     df.columns = j["column_names"]
-     return df   
     
 if __name__ == '__main__':
   app.run(port=33507,debug=True)
