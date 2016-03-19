@@ -31,7 +31,7 @@ def graph():
     df = pd.DataFrame(j["data"])
     df.columns = j["column_names"]
     
-    df = getdf(resp_data)
+    """
     
     p = figure(title='Data from Quandl WIKI set',x_axis_type='datetime')
     p.line(df['Date'],df['Close'], color='#A6CEE3', legend='stock')
@@ -39,7 +39,7 @@ def graph():
     p.yaxis.axis_label = 'Price' 
     p.legend.orientation = "top_left"
     script, div = components(p)
-    """
+    
     return render_template('graph.html')
     """
 """
