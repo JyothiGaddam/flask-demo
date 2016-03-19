@@ -21,8 +21,14 @@ def graph():
     stock = request.form['stock']
     #print stock
     #plttype = request.form.tickerdetails
-    
-    resp_data = getdata(stock)
+    api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json' % stock
+    session = re.Session()
+    session.mount('http://',re.adapters.HTTPAdapter(max_retries=3))
+    resp_data = session.get(api_url)
+    #resp_data = getdata(stock)
+    j = resp_data.json()
+    df = pd.DataFrame(j["data"])
+    df.columns = j["column_names"]
     """
     df = getdf(resp_data)
     
