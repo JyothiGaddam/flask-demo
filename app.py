@@ -32,8 +32,8 @@ def graph():
     p.yaxis.axis_label = 'Price' 
     p.legend.orientation = "top_left"
     script, div = components(p)
-
-    return render_template('graph.html', script=script, div=div)
+    return render_template('graph.html', stock=stock, data=df.to_html())
+    #return render_template('graph.html', script=script, div=div)
     
 
 def getdata(stock):
