@@ -17,8 +17,8 @@ def index():
 
 @app.route('/graph', methods = ['POST'])
 def graph():
-    return render_template('graph.html')
-"""
+    #return render_template('graph.html')
+
     stock = request.form['stock']
     #print stock
     #plttype = request.form.tickerdetails
@@ -48,6 +48,6 @@ def getdf(resp_data):
      df = pd.DataFrame(j["data"])
      df.columns = j["column_names"]
      return df   
-"""      
+     
 if __name__ == '__main__':
   app.run(port=33507)
