@@ -28,7 +28,7 @@ def analysis():
     df.columns = j["column_names"]
     return render_template("analysis.html", mystring=stock, my_list=df['Date'])
                                                                 
-"""
+
 @app.route('/graph', methods = ['POST'])
 def graph():
     
@@ -53,7 +53,7 @@ def graph():
     p.legend.orientation = "top_left"
     script, div = components(p)
     
-    return render_template('graph.html')
+    return render_template('graph.html', script=script, div=div)
     
 
 def getdata(stock):
