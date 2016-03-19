@@ -24,7 +24,7 @@ def graph():
     #plttype = request.form.tickerdetails
     api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json' % stock
     session = requests.Session()
-    session.mount('http://',re.adapters.HTTPAdapter(max_retries=3))
+    session.mount('http://',requests.adapters.HTTPAdapter(max_retries=3))
     resp_data = session.get(api_url)
     #resp_data = getdata(stock)
     j = resp_data.json()
