@@ -33,7 +33,7 @@ def graph():
     
     x_list = pd.to_datetime(df["Date"])
 
-    y_list = [10,20,30,40,50,60]
+    y_list = df['Close']
     
     TOOLS = 'box_zoom,box_select,resize,reset,hover,wheel_zoom'
     p1 = figure(tools=TOOLS, title='Data from Quandl WIKI set',x_axis_type = "datetime")
