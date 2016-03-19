@@ -25,7 +25,7 @@ def graph():
     #return render_template('graph.html', stock=stock, data=df.to_html())
 
     p = figure(title='Data from Quandl WIKI set',x_axis_type='datetime')
-    p.line(df['Date'],df['Adj Close'], color='#A6CEE3', legend=stock)
+    p.line(df['Date'],df['Close'], color='#A6CEE3', legend='stock')
     p.xaxis.axis_label = 'Date'
     p.yaxis.axis_label = 'Price' 
     p.legend.orientation = "top_left"
