@@ -26,7 +26,8 @@ def analysis():
     j = resp_data.json()
     df = pd.DataFrame(j["data"])
     df.columns = j["column_names"]
-    return render_template("analysis.html", mystring=stock)
+    my_list = df['Date']
+    return render_template("analysis.html", mystring=stock, my_list)
                                                                 
 """
 @app.route('/graph', methods = ['POST'])
