@@ -23,8 +23,9 @@ def graph():
     #plttype = request.form.tickerdetails
     
     resp_data = getdata(stock)
-    df = getdf(resp_data)
     """
+    df = getdf(resp_data)
+    
     p = figure(title='Data from Quandl WIKI set',x_axis_type='datetime')
     p.line(df['Date'],df['Close'], color='#A6CEE3', legend='stock')
     p.xaxis.axis_label = 'Date'
