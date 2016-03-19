@@ -15,7 +15,7 @@ def main():
 def index():
   return render_template('index.html')
 
-@app.route('/analysis')
+@app.route('/analysis',methods = ['POST'])
 def analysis():
     stock = request.form['stock']
     api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json' % stock
