@@ -31,8 +31,8 @@ def graph():
     df = pd.DataFrame(j["data"])
     df.columns = j["column_names"]
     
-    x_list = np.array(df['Date'],dtype=np.datetime64)
-    y_list = [10,20,30]
+    x_list = ['2016-03-18', '2016-03-17', '2016-03-16',  '1980-12-16', '1980-12-15', '1980-12-12']
+    y_list = [10,20,30,40,50,60]
     
     TOOLS = 'box_zoom,box_select,resize,reset,hover,wheel_zoom'
     p1 = figure(tools=TOOLS, title='Data from Quandl WIKI set',x_axis_type = "datetime")
