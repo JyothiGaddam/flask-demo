@@ -24,6 +24,7 @@ def graph():
     #plttype = request.form.tickerdetails
     resp_data = getdata(stock)
     df = getdf(resp_data)
+    return render_template('analysis.html', name=stock, data=df.to_html())
     #return render_template('graph.html', stock=stock, data=df.to_html())
 
     p = figure(title='Data from Quandl WIKI set',x_axis_type='datetime')
@@ -32,7 +33,7 @@ def graph():
     p.yaxis.axis_label = 'Price' 
     p.legend.orientation = "top_left"
     script, div = components(p)
-    return render_template('graph.html', stock=stock, data=df.to_html())
+    #return render_template('graph.html', stock=stock, data=df.to_html())
     #return render_template('graph.html', script=script, div=div)
     
 
