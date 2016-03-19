@@ -15,7 +15,22 @@ def main():
 def index():
   return render_template('index.html')
 
+@app.route('/analysis')
+def analysis():
+    stock = request.form['stock']
+    api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json' % stock
+    session = requests.Session()
+    session.mount('http://',requests.adapters.HTTPAdapter(max_retries=3))
+    resp_data = session.get(api_url)
+    #resp_data = getdata(stock)
+    j = resp_data.json()
+    df = pd.DataFrame(j["data"])
+    df.columns = j["column_names"]
+    return render_template("analysis.html", name=stock, data=x.to_html())
+                                                                # ^^^^^^^^^
 
+
+"""
 @app.route('/graph', methods = ['POST'])
 def graph():
     
@@ -42,7 +57,7 @@ def graph():
     
     return render_template('graph.html')
     """
-"""
+
 def getdata(stock):
     api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json' % stock
     session = re.Session()
