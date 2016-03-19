@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, redirect
 import pandas as pd
-from bokeh.plotting import figure
+#from bokeh.plotting import figure
 import jinja2
-from bokeh.embed import components
+#from bokeh.embed import components
 
 app = Flask(__name__)
 
