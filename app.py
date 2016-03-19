@@ -41,8 +41,8 @@ def graph():
     script, div = components(p)
     """
     return render_template('graph.html')
-    
-
+    """
+"""
 def getdata(stock):
     api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json' % stock
     session = re.Session()
