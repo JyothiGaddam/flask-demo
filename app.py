@@ -17,25 +17,21 @@ def index():
 
 @app.route('/graph', methods = ['POST'])
 def graph():
-    #return render_template('graph.html')
-
     stock = request.form['stock']
     #print stock
     #plttype = request.form.tickerdetails
     resp_data = getdata(stock)
     df = getdf(resp_data)
-    return render_template('analysis.html', name=stock, data=df.to_html())
-    #return render_template('graph.html', stock=stock, data=df.to_html())
-
+    """
     p = figure(title='Data from Quandl WIKI set',x_axis_type='datetime')
     p.line(df['Date'],df['Close'], color='#A6CEE3', legend='stock')
     p.xaxis.axis_label = 'Date'
     p.yaxis.axis_label = 'Price' 
     p.legend.orientation = "top_left"
     script, div = components(p)
-    #return render_template('graph.html', stock=stock, data=df.to_html())
-    #return render_template('graph.html', script=script, div=div)
     
+    return render_template('graph.html', script=script, div=div)
+    """
 
 def getdata(stock):
     api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json' % stock
