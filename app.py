@@ -54,12 +54,12 @@ def graph():
     
     
     
-    p = figure(title='Data from Quandl WIKI set',x_axis_type='datetime')
-    p.line(df['Date'],df['Close'], color='#A6CEE3', legend='stock')
-    p.xaxis.axis_label = 'Date'
-    p.yaxis.axis_label = 'Price' 
-    p.legend.orientation = "top_left"
-    script, div = components(p)
+    plot = figure(title='Data from Quandl WIKI set',x_axis_type='datetime')
+    plot.line(df['Date'],df['Close'], color='#A6CEE3', legend='stock')
+    plot.xaxis.axis_label = 'Date'
+    plot.yaxis.axis_label = 'Price' 
+    plot.legend.orientation = "top_left"
+    script, div = components(plot)
     
     return render_template('graph.html', script=script, div=div)
     
