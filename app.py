@@ -46,7 +46,7 @@ def graph():
     i=0
     for item in ytypes:
         p1.line(x_list, df[item], color=colors[i], legend=stock+"-"+item)
-        i++
+        i=i+1
     
     script, div = components(p1)
     
