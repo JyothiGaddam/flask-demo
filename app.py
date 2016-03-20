@@ -23,8 +23,8 @@ def datetime(x):
 def graph():
     
     stock = request.form['stock']
-    resp_str = request.form('tickerdetails')
-    ytypes = resp_str.split(",")
+    resp_str = request.POST['tickerdetails']
+    #ytypes = resp_str.split(",")
     api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json' % stock
     session = requests.Session()
     session.mount('http://',requests.adapters.HTTPAdapter(max_retries=3))
