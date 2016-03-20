@@ -43,7 +43,7 @@ def graph():
     p1.xaxis.axis_label = 'Date'
     p1.yaxis.axis_label = 'Price'
 
-    p1.line(x_list, y_list, color='#A6CEE3', legend=stock+"---"+ytypes[1])
+    p1.line(x_list, y_list, color='#A6CEE3', legend=stock+"-"+ytypes[0]+"--"+ytypes[1]+"---"+ytypes[2]+"----"+ytypes[3])
     
     script, div = components(p1)
     
