@@ -23,7 +23,7 @@ def datetime(x):
 def graph():
     
     stock = request.form['stock']
-    ytypes = request.form['tickerdetails']
+    ytypes = request.POST.getlist['tickerdetails']
     api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json' % stock
     session = requests.Session()
     session.mount('http://',requests.adapters.HTTPAdapter(max_retries=3))
@@ -43,7 +43,7 @@ def graph():
     p1.xaxis.axis_label = 'Date'
     p1.yaxis.axis_label = 'Price'
 
-    p1.line(x_list, y_list, color='#A6CEE3', legend=stock+"----"+ytypes)
+    p1.line(x_list, y_list, color='#A6CEE3', legend=stock+"----"+ytypes[1]+"----"ytypes[2])
     
     script, div = components(p1)
     
