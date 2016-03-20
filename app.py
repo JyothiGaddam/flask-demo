@@ -5,6 +5,7 @@ from bokeh.plotting import figure
 import jinja2
 from bokeh.embed import components
 import requests
+from bokeh.charts.utils import cycle_colors
 
 app = Flask(__name__)
 
@@ -40,9 +41,13 @@ def graph():
     p1.grid.grid_line_alpha=0.3
     p1.xaxis.axis_label = 'Date'
     p1.yaxis.axis_label = 'Price'
-
+    
+    test = {}
+    for i in range(0,10):
+        test[str(i)] = np.random.normal(0,1,100)
+    palette = cycle_colors(test)
     for item in ytypes:
-        p1.line(x_list, df[item], legend=stock+"-"+item)
+        p1.line(x_list, df[item], palette=palette, legend=stock+"-"+item)
     
     script, div = components(p1)
     
