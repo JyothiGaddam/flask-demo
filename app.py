@@ -34,16 +34,15 @@ def graph():
     
     x_list = pd.to_datetime(df["Date"])
 
-    y_list = df['Close']
-    
+       
     TOOLS = 'box_zoom,box_select,resize,reset,hover,wheel_zoom'
     p1 = figure(tools=TOOLS, title='Data from Quandl WIKI set',x_axis_type = "datetime")
-    #p1.title = "Stock Closing Prices"
     p1.grid.grid_line_alpha=0.3
     p1.xaxis.axis_label = 'Date'
     p1.yaxis.axis_label = 'Price'
 
-    p1.line(x_list, y_list, color='#A6CEE3', legend=stock+"-"+ytypes[0]+"--"+ytypes[1]+"---"+ytypes[2]+"----"+ytypes[3])
+    for item in ytypes:
+        p1.line(x_list, df[item], legend=stock+"-"+item)
     
     script, div = components(p1)
     
