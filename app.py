@@ -5,7 +5,7 @@ from bokeh.plotting import figure
 import jinja2
 from bokeh.embed import components
 import requests
-from bokeh.charts.utils import cycle_colors
+from bokeh.charts import cycle_colors
 
 app = Flask(__name__)
 
